@@ -1,0 +1,130 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+Edit Report | Report ID : {{ report.id }}
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Edit Report</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/edit_report_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <input type="hidden" class="form-control" name="report_id" placeholder="Enter Report" value="{{ report.id }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Complainant Full Name</label>
+                    <input type="text" class="form-control" name="complainant_full_name" placeholder="Full Name" value="{{ report.complainant_full_name }}">
+                  </div>
+                   <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" class="form-control" placeholder="Age" name="age" value="{{ report.age }}">
+                  </div>
+                   <div class="form-group">
+                    <label>Sex</label>
+                    <input type="text" class="form-control" placeholder="Sex" name="sex" value="{{ report.sex }}">
+                  </div>
+                   <div class="form-group">
+                    <label>Civil Status</label>
+                    <input type="text" class="form-control" placeholder="Civil Status" name="civil_status" value="{{ report.civil_status }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Citizenship</label>
+                    <input type="text" class="form-control" placeholder="Citizenship" name="citizenship" value="{{ report.citizenship }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Occupation</label>
+                    <input type="text" class="form-control" placeholder="Occupation" name="occupation" value="{{ report.occupation }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Purok Number</label>
+                    <input type="text" class="form-control" placeholder="Purok Number" name="purok_number" value="{{ report.purok_number }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" placeholder="Address" name="address" value="{{ report.address }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Report_date</label>
+                    <input type="date" class="form-control" placeholder="Report Date" name="report_date" value="{{ report.report_date }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Report_message</label>
+                    <input type="text" class="form-control" placeholder="Report Message" name="report_message" value="{{ report.report_message }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Report_status</label>
+                    <input type="text" class="form-control" placeholder="Status" name="report_status" value="{{ report.report_status }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Full Name</label>
+                    <input type="text" class="form-control" name="defendant_full_name" placeholder="Full Name" value="{{ report.defendant_full_name }}">
+                  </div>
+                   <div class="form-group">
+                    <label>Defendant Age</label>
+                    <input type="number" class="form-control" placeholder="Age" name="defendant_age" value="{{ report.defendant_age }}">
+                  </div>
+                   <div class="form-group">
+                    <label>Defendant Sex</label>
+                    <input type="text" class="form-control" placeholder="Sex" name="defendant_sex" value="{{ report.defendant_sex }}">
+                  </div>
+                   <div class="form-group">
+                    <label>Defendant Civil Status</label>
+                    <input type="text" class="form-control" placeholder="Civil Status" name="defendant_civil_status" value="{{ report.defendant_civil_status }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Citizenship</label>
+                    <input type="text" class="form-control" placeholder="Citizenship" name="defendant_citizenship" value="{{ report.defendant_citizenship }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Occupation</label>
+                    <input type="text" class="form-control" placeholder="Occupation" name="defendant_occupation" value="{{ report.defendant_occupation }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Purok Number</label>
+                    <input type="text" class="form-control" placeholder="Purok Number" name="defendant_purok_number" value="{{ report.defendant_purok_number }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Address</label>
+                    <input type="text" class="form-control" placeholder="Address" name="defendant_address" value="{{ report.defendant_address }}">
+                  </div>
+                      <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Save Report</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

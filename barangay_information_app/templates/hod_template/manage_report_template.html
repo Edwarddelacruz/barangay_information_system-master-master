@@ -1,0 +1,96 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+<h2 class="text-side text-white font-weight-light">Manage Reports</h2>
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+
+           <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Report Details</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Complainant Full Name</th>
+                      <th>Age</th>
+                      <th>Sex</th>
+                      <th>Civil Status</th>
+                      <th>Citizenship</th>
+                      <th>Occupation</th>
+                      <th>Purok Number</th>
+                      <th>Address</th>
+                      <th>Report Date</th>
+                      <th>Report Message</th>
+                      <th>Report Status</th>
+                      <th>Defendant Full Name</th>
+                      <th>Defendant Age</th>
+                      <th>Defendant Sex</th>
+                      <th>Defendant Civil Status</th>
+                      <th>Defendant Citizenship</th>
+                      <th>Defendant Occupation</th>
+                      <th>Defendant Purok Number</th>
+                      <th>Defendant Address</th>
+                      <th>Last Login</th>
+                      <th>Date Joined</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for report in report %}
+                    <tr>
+                      <td>{{ report.id }}</td>
+                      <td>{{ report.complainant_full_name }}</td>
+                      <td>{{ report.age }}</td>
+                      <td>{{ report.gender }}</td>
+                      <td>{{ report.civil_status }}</td>
+                      <td>{{ report.citizenship }}</td>
+                      <td>{{ report.occupation }}</td>
+                      <td>{{ report.purok_number }}</td>
+                      <td>{{ report.address }}</td>
+                      <td>{{ report.report_date }}</td>
+                      <td>{{ report.report_message }}</td>
+                      <td>{{ report.report_status }}</td>
+                      <td>{{ report.defendant_full_name }}</td>
+                      <td>{{ report.defendant_age }}</td>
+                      <td>{{ report.defendant_gender }}</td>
+                      <td>{{ report.defendant_civil_status }}</td>
+                      <td>{{ report.defendant_citizenship }}</td>
+                      <td>{{ report.defendant_occupation }}</td>
+                      <td>{{ report.defendant_purok_number }}</td>
+                      <td>{{ report.defendant_address }}</td>
+                      <td>{{ report.created_at }}</td>
+                      <td>{{ report.updated_at }}</td>
+                      <td><a href="/edit_report/{{ report.id }}" class="btn btn-success">Edit</a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

@@ -1,0 +1,86 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+<h2 class="text-side text-white font-weight-light">Manage Household</h2>
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+
+           <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Household Details</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Last Name</th>
+                      <th>First Name</th>
+                      <th>Middle Name</th>
+                      <th>Suffix</th>
+                      <th>Age</th>
+                      <th>Sex</th>
+                      <th>Purok Number</th>
+                      <th>Purok ID</th>
+                      <th>Place Of Birth</th>
+                      <th>Birthdate</th>
+                      <th>Civil Status</th>
+                      <th>Citizenship</th>
+                      <th>Occupation</th>
+                      <th>Members of the Family</th>
+                      <th>Last Login</th>
+                      <th>Date Joined</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for household in household %}
+                    <tr>
+                      <td>{{ household.id }}</td>
+                      <td>{{ household.last_name }}</td>
+                      <td>{{ household.first_name }}</td>
+                      <td>{{ household.middle_name }}</td>
+                      <td>{{ household.suffix }}</td>
+                      <td>{{ household.age }}</td>
+                      <td>{{ household.gender }}</td>
+                      <td>{{ household.purok_id.purok_number }}</td>
+                      <td>{{ household.purok_id.id }}</td>
+                      <td>{{ household.place_of_birth }}</td>
+                      <td>{{ household.birthdate }}</td>
+                      <td>{{ household.civil_status }}</td>
+                      <td>{{ household.citizenship }}</td>
+                      <td>{{ household.occupation }}</td>
+                      <td>{{ household.members_of_the_family }}</td>
+                      <td>{{ household.created_at }}</td>
+                      <td>{{ household.updated_at }}</td>
+                      <td><a href="/edit_household/{{ household.id }}" class="btn btn-success">Edit</a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

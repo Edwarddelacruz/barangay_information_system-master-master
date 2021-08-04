@@ -1,0 +1,82 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+Edit Purok | Purok ID : {{ purok.id }}
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Edit Purok</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/edit_purok_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <input type="hidden" class="form-control" name="purok_id" placeholder="Enter Purok" value="{{ purok.id }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Purok Number</label>
+                    <input type="text" class="form-control" name="purok_number" placeholder="Purok Number" value="{{ purok.purok_number }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ purok.last_name }}">
+                  </div>
+                   <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{ purok.first_name }}">
+                  </div>
+                   <div class="form-group">
+                    <label>Middle Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name" name="middle_name" value="{{ purok.middle_name }}">
+                  </div>
+                   <div class="form-group">
+                    <label>Suffix</label>
+                    <input type="text" class="form-control" placeholder="Suffix" name="suffix" value="{{ purok.suffix }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" class="form-control" placeholder="Age" name="age" value="{{ purok.age }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Sex</label>
+                    <input type="text" class="form-control" placeholder="Sex" name="sex" value="{{ purok.gender }}">
+                  </div>
+                      <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Save Resident</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

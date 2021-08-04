@@ -1,0 +1,132 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+<h2 class="text-side text-white font-weight-light">Add Report</h2>
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add Report</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/add_report_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Complainant Full Name</label>
+                    <input type="text" class="form-control" name="complainant_full_name" placeholder="Ful Name">
+                  </div>
+                   <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" class="form-control" placeholder="Age" name="age">
+                  </div>
+                    <div class="form-group">
+                    <label>Sex</label>
+                    <select class="form-control" name="sex">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                  </div>
+                   <div class="form-group">
+                    <label>Civil Status</label>
+                    <input type="text" class="form-control" placeholder="Civil Status" name="civil_status">
+                  </div>
+                    <div class="form-group">
+                    <label>Citizenship</label>
+                    <input type="text" class="form-control" placeholder="Citizenship" name="citizenship">
+                  </div>
+                   <div class="form-group">
+                    <label>Occupation</label>
+                    <input type="text" class="form-control" placeholder="Occupation" name="occupation">
+                  </div>
+                  <div class="form-group">
+                    <label>Purok Number</label>
+                    <input type="text" class="form-control" name="purok_number" placeholder="Purok Number">
+                  </div>
+                  <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" name="address" placeholder="Address">
+                  </div>
+                  <div class="form-group">
+                    <label>Report Date</label>
+                    <input type="date" class="form-control" name="report_date" placeholder="Report Date">
+                  </div>
+                  <div class="form-group">
+                    <label>Report Message</label>
+                    <input type="text" class="form-control" name="report_message" placeholder="Complaint">
+                  </div>
+                  <div class="form-group">
+                    <label>Report Status</label>
+                    <input type="text" class="form-control" name="report_status" placeholder="Status">
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Full Name</label>
+                    <input type="text" class="form-control" name="defendant_full_name" placeholder="Full Name">
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Age</label>
+                    <input type="number" class="form-control" name="defendant_age" placeholder="Age">
+                  </div>
+                    <div class="form-group">
+                    <label>Defendant Sex</label>
+                    <select class="form-control" name="defendant_sex">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Civil Status</label>
+                    <input type="text" class="form-control" name="defendant_civil_status" placeholder="Civil Status">
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Citizenship</label>
+                    <input type="text" class="form-control" name="defendant_citizenship" placeholder="Citizenship">
+                  </div>
+                  <div class="form-group">
+                    <label>Defendant Occupation</label>
+                    <input type="text" class="form-control" name="defendant_occupation" placeholder="Occupation">
+                  </div>
+                    <div class="form-group">
+                    <label>Defendant Purok Nnumber</label>
+                    <input type="text" class="form-control" name="defendant_purok_number" placeholder="Purok Number">
+                  </div>
+                    <div class="form-group">
+                    <label>Defendant Address</label>
+                    <input type="text" class="form-control" name="defendant_address" placeholder="Address">
+                  </div>
+                      <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert  alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert  alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                       {% endif %}
+                     </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Add Report</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

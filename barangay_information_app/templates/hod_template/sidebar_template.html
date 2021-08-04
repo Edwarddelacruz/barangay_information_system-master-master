@@ -1,0 +1,171 @@
+{% load static %}
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="{% static "dist/img/logo1.jpg" %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+      <span class="brand-text font-weight-light">Information System</span>
+
+    </a>
+<div class="side-inner align-items-end" style="background-image:url('{% static "img/bg_2.jpg" %}">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static "dist/img/admin.jpg" %}" alt="AdminLTE Logo" class="brand-image img-square elevation-3">
+        </div>
+        <div class="info">
+          <a href="{% url 'admin_profile' %}" class="d-block">{{ user.username }}</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+              {% url 'admin_home' as admin_home %}
+            <a href="{{ admin_home }}" class="nav-link {% if request.path == admin_home %} active {% endif %}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Home
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+              {% url 'add_staff' as add_staff %}
+            <a href="{{ add_staff }}" class="nav-link {% if request.path == add_staff %} active {% endif %}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Add Staff
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+             {% url 'manage_staff' as manage_staff %}
+           {% url 'edit_staff' staff_id=id as edit_staff %}
+            <a href="{{ manage_staff }}" class="nav-link {% if request.path == manage_staff %} active {% endif %} {% if request.path == edit_staff %} active {% endif %}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Manage Staffs
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'add_purok' as add_purok %}
+            <a href="{% url 'add_purok' %}" class="nav-link {% if request.path == add_purok %} active {% endif %}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Add Resident
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+             {% url 'manage_purok' as manage_purok %}
+           {% url 'edit_purok' purok_id=id as edit_purok %}
+            <a href="{% url 'manage_purok' %}" class="nav-link {% if request.path == manage_purok %} active {% endif %} {% if request.path == edit_purok %} active {% endif %} ">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Manage Residents
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'add_household' as add_household %}
+            <a href="{% url 'add_household' %}" class="nav-link {% if request.path == add_household %} active {% endif %}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Add Household
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'manage_household' as manage_household %}
+            {% url 'edit_household' household_id=id as edit_household %}
+            <a href="{% url 'manage_household' %}" class="nav-link {% if request.path == manage_household %} active {% endif %} {% if request.path == edit_household %} active {% endif %} ">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Manage Households
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'add_official' as add_official %}
+            <a href="{% url 'add_official' %}" class="nav-link {% if request.path == add_official %} active {% endif %}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Add Official
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+             {% url 'manage_official' as manage_official %}
+           {% url 'edit_official' official_id=id as edit_official %}
+            <a href="{% url 'manage_official' %}" class="nav-link {% if request.path == manage_official %} active {% endif %} {% if request.path == edit_official %} active {% endif %} ">
+              <i class="nav-icon fas fa-image"></i>
+              <p>
+                Manage Officials
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'add_report' as add_report %}
+            <a href="{% url 'add_report' %}" class="nav-link {% if request.path == add_report %} active {% endif %}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Add Report
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+             {% url 'manage_report' as manage_report %}
+           {% url 'edit_report' report_id=id as edit_report %}
+            <a href="{% url 'manage_report' %}" class="nav-link {% if request.path == manage_report %} active {% endif %} {% if request.path == edit_report %} active {% endif %} ">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+                Manage Reports
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/view_attendance" class="nav-link">
+              <i class="nav-icon fas fa-calendar"></i>
+              <p>
+                View Attendance
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+              <p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

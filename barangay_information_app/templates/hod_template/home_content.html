@@ -1,0 +1,249 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+<h2 class="text-side text-white font-weight-light">Home</h2>
+<iframe src="https://free.timeanddate.com/clock/i7x7tl40/n145/tlph/fn6/fs16/fc0ff/tc000/ftbi/bas2/bat1/bacfff/pa8/tt0/tw1/th2/ta1/tb4" frameborder="0" width="212" height="60"></iframe>
+
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ household_count }}</h3>
+
+                <h4>Total Household</h4>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{% url 'manage_household' %}" class="small-box-footer">More info <i class="fas fa-eye"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ purok_count }}</h3>
+
+                <h4>Total Residents</h4>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{% url 'manage_purok' %}" class="small-box-footer">More info <i class="fas fa-eye"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+              <div class="inner">
+                <h3>{{ officials_count }}</h3>
+
+                <h4>Total Officials</h4>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{% url 'manage_official' %}" class="small-box-footer">More info <i class="fas fa-eye"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ staff_count }}</h3>
+
+                <h4>Total Staffs</h4>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{% url 'manage_staff' %}" class="small-box-footer">More info <i class="fas fa-eye"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+          <div class="row">
+              <div class="col-lg-6">
+                              <!-- PIE CHART -->
+                <div class="card card-danger">
+                  <div class="card-header">
+                    <h3 class="card-title">Officials and Staff Chart</h3>
+
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+              </div>
+              <div class="col-lg-6">
+                              <!-- PIE CHART -->
+                   <div class="card card-success">
+                  <div class="card-header">
+                    <h3 class="card-title">Total Household in Each Purok</h3>
+
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                      </button>
+                      <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+              </div>
+          </div>
+
+
+
+
+              <!-- /.card-body -->
+            </div>
+
+    <div id="searchresult" style="display: block;">
+    	<h3> BARANGAY OFFICIALS </h3>
+    	<div id="resultbox"><div class="resultcontent"><td><img src="/media/capitan.jpg" style="width:100px"></td><p><strong>Jelito V. Dela Cruz </strong><br><span>Punong Barangay</span><br><strong>Email: </strong><a href="mailto:" "=""></a><br><strong>Contact No.:</strong> None<br></p><p><strong>Marlito M. Fian </strong><br><span>Sangguniang Barangay Member</span><br><strong>Email: </strong><a href="mailto:" "=""></a><br><strong>Contact No.:</strong> None<br></p><p><strong>Angelo A. Marteniz </strong><br><span>Sangguniang Barangay Member</span><br><strong>Email: </strong><a href="mailto:" "=""></a><br><strong>Contact No.:</strong> None<br></p><p><strong>Saturnino B. Rosatase JR.</strong><br><span>Sangguniang Barangay Member</span><br><strong>Email: </strong><a href="mailto:" "=""></a><br><strong>Contact No.:</strong> None<br></p><p><strong>Jaime V. Catantan </strong><br><span>Sangguniang Barangay Member</span><br><strong>Email: </strong><a href="mailto:" "=""></a><br><strong>Contact No.:</strong> None<br></p><p><strong>Jeanette N. Baclaocos </strong><br><span>Sangguniang Barangay Member</span><br><strong>Email: </strong><a href="mailto:" "=""></a><br><strong>Contact No.:</strong> None<br></p><p><strong>Frank Anthony A. Salvedia </strong><br><span>Sangguniang Barangay Member</span><br><strong>Email: </strong><a href="mailto:" "=""></a><br><strong>Contact No.:</strong> None<br></p><p><strong>Adelita B. Salor </strong><br><span>Sangguniang Barangay Member</span><br><strong>Email: </strong><a href="mailto:" "=""></a><br><strong>Contact No.:</strong> None<br></p><p><strong>Harold Jay T. Egana </strong><br><span>SK Chairperson</span><br><strong>Email: </strong><a href="mailto:" haroldjay717@gmail.comm"="">haroldjay717@gmail.comm</a><br><strong>Contact No.:</strong> None<br></p><p><strong>Jeannette  Napili </strong><br><span>Barangay Secretary</span><br><strong>Email: </strong><a href="mailto:" jeannettenapili@yahoo.com"="">jeannettenapili@yahoo.com</a><br><strong>Contact No.:</strong> None<br></p></div></div>
+
+    </div>
+
+					  </div>
+				  </div><!-- .cl-column-body -->
+			</div><!-- .cl-column -->
+
+	<style>
+	#searchresult {
+		margin:0 auto 40px; color: #033;
+		display: none;
+	}
+	#searchresult h3 {
+		text-align: center;
+		background-color: rgb(102, 102, 102);
+		border-style: solid;;
+		border-color: rgb(102, 102, 102);
+		border-width: 0.8px;
+		box-sizing: border-box;
+		color: rgb(255, 255, 255);
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 22px;
+		margin: 5px 0px 0px 0px;
+		padding: 6px 6px 8px 6px;
+	}
+	#searchresult #resultbox {
+		background-color: #fff;
+		border-style: solid;;
+		border-color: rgb(102, 102, 102);
+		border-width: 0.8px;
+		box-sizing: border-box;
+	}
+	.resultcontent {
+		background-attachment: scroll;
+		background-color: rgb(255, 255, 255);
+		color: rgb(0, 51, 51);
+		font-size: 15.5px;
+		line-height: 25px;
+		margin: 0px;
+		padding: 10px 30px 10px 30px;
+	}
+	.resultcontent p{
+		margin-top: 30px;
+		border-bottom: 1px solid rgb(204, 204, 204);
+		padding: 0px 0px 20px 0px;
+	}
+	.resultcontent p strong.official_name{
+		font-size: 120%;
+		font-weight: bold;
+	}
+	.resultcontent p span{
+		color: #ED3A3D;
+	}
+	</style>
+
+          </div>
+
+
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
+{% block custom_js %}
+<script>
+    $(document).ready(function(){
+
+            var pieData        = {
+                  labels: [
+                      'Staffs',
+                      'Officials',
+                  ],
+                  datasets: [
+                    {
+                      data: [{{ officials_count }},{{ staff_count }}],
+                      backgroundColor : ['#f56954', '#ffc107'],
+                    }
+                  ]
+             };
+
+            var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+            var pieOptions     = {
+              maintainAspectRatio : false,
+              responsive : true,
+            }
+            //Create pie or douhnut chart
+            // You can switch between pie and douhnut using the method below.
+            var pieChart = new Chart(pieChartCanvas, {
+              type: 'pie',
+              data: pieData,
+              options: pieOptions
+            })
+
+            //Second Chart for Total Households in each Purok
+                var household_count_list={{ household_count_list }};
+                var purok_number_list={{ purok_number_list|safe }};
+                var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+                var donutData        = {
+                  labels: purok_number_list,
+                  datasets: [
+                    {
+                      data: household_count_list,
+                      backgroundColor : ['#2196F3', '#795548', '#9C27B0', '#F44336', '#FFEB3B', '#388E3C', '#FF9800', '#6C757D', '#2196F3', '#795548', '#9C27B0', '#F44336', '#FFEB3B', '#388E3C', '#FF9800', '#6C757D', '#2196F3', '#795548', '#9C27B0', '#F44336', '#FFEB3B', '#388E3C', '#FF9800', '#6C757D', '#2196F3', '#795548', '#9C27B0', '#F44336', '#FFEB3B', '#388E3C', '#FF9800', '#6C757D', '#2196F3', '#795548', '#9C27B0', '#F44336', '#FFEB3B', '#388E3C', '#FF9800', '#6C757D', '#2196F3', '#795548'],
+                    }
+                  ]
+                }
+                var donutOptions     = {
+                  maintainAspectRatio : false,
+                  responsive : true,
+                }
+                //Create pie or douhnut chart
+                // You can switch between pie and douhnut using the method below.
+                var donutChart = new Chart(donutChartCanvas, {
+                  type: 'doughnut',
+                  data: donutData,
+                  options: donutOptions
+                })
+
+    });
+    </script>
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock custom_js %}

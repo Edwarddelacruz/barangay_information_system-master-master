@@ -1,0 +1,76 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+<h2 class="text-side text-white font-weight-light">Manage Officials</h2>
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+
+           <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Official Details</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Last Name</th>
+                      <th>First Name</th>
+                      <th>Middle Name</th>
+                      <th>Suffix</th>
+                      <th>Age</th>
+                      <th>Sex</th>
+                      <th>Position</th>
+                      <th>Profile Pic</th>
+                      <th>Contact Number</th>
+                      <th>Last Login</th>
+                      <th>Date Joined</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for official in official %}
+                    <tr>
+                      <td>{{ official.id }}</td>
+                      <td>{{ official.last_name }}</td>
+                      <td>{{ official.first_name }}</td>
+                      <td>{{ official.middle_name }}</td>
+                      <td>{{ official.suffix }}</td>
+                      <td>{{ official.age }}</td>
+                      <td>{{ official.gender }}</td>
+                      <td>{{ official.position }}</td>
+                      <td><img src="{{ official.profile_pic }}" style="width:100px"/></td>
+                      <td>{{ official.contact_number }}</td>
+                      <td>{{ official.created_at }}</td>
+                      <td>{{ official.updated_at }}</td>
+                      <td><a href="/edit_official/{{ official.id }}" class="btn btn-success">Edit</a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

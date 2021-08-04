@@ -1,0 +1,198 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+Add Household
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add Household</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/add_household_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name" name="last_name">
+                  </div>
+                   <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" name="first_name">
+                  </div>
+                    <div class="form-group">
+                    <label>Middle Name</label>
+                    <input type="text" class="form-control" placeholder="Middle Name" name="middle_name">
+                  </div>
+                   <div class="form-group">
+                    <label>Suffix</label>
+                    <input type="text" class="form-control" placeholder="Suffix" name="suffix">
+                  </div>
+                    <div class="form-group">
+                    <label>Age</label>
+                    <input type="text" class="form-control" placeholder="Age" name="age">
+                  </div>
+                   <div class="form-group">
+                    <label>Gender</label>
+                    <input type="text" class="form-control" placeholder="Gender" name="gender">
+                  </div>
+                    <div class="form-group">
+                    <label>Purok</label>
+                    <select class="form-control" name="purok">
+                        {% for purok in purok %}
+                          <option value="{{ purok.id }}">{{ purok.purok_number }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                    <div class="form-group">
+                    <label>Place of Birth</label>
+                    <input type="text" class="form-control" placeholder="Place of Birth" name="place_of_birth">
+                  </div>
+                    <div class="form-group">
+                    <label>Birthdate</label>
+                    <input type="text" class="form-control" placeholder="Birthdate" name="birthdate">
+                  </div>
+                    <div class="form-group">
+                    <label>Civil Status</label>
+                    <input type="text" class="form-control" placeholder="Civil Status" name="civil_status">
+                  </div>
+                    <div class="form-group">
+                    <label>Citizenship</label>
+                    <input type="text" class="form-control" placeholder="Citizenship" name="citizenship">
+                  </div>
+                    <div class="form-group">
+                    <label>Occupation</label>
+                    <input type="text" class="form-control" placeholder="Occupation" name="occupation">
+                  </div>
+                    <div class="form-group">
+                    <label>Family Unit</label>
+                    <input type="text" class="form-control" placeholder="Family Unit" name="family_unit">
+                  </div>
+                      <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert  alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert  alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                       {% endif %}
+                     </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Add Household</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barangay Information System | Log in</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static "plugins/fontawesome-free/css/all.min.css" %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static "plugins/icheck-bootstrap/icheck-bootstrap.min.css" %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static "dist/css/adminlte.min.css" %}">
+</head>
+<body  style="background-image:url('{% static 'img/pic1.jpg'%}');"
+class="hold-transition login-page"
+>
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index.html"><b>Barangay</b> Information System</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <h5 class="login-box-msg">Sign in to Barangay Information System</h5>
+
+      <form action="/doLogin" method="post">
+          {% csrf_token %}
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Email" name="email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password" name="password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <div class="row">
+          {% if messages %}
+          <div class="col-12">
+            {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div class="alert  alert-danger" style="margin-top:10px">{{ message }}</div>
+            {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <!-- /.social-auth-links -->
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="{% static "plugins/jquery/jquery.min.js" %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static "plugins/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static "dist/js/adminlte.min.js" %}"></script>
+</body>
+</html>
+
+
+                  <div class="form-group">
+                    <label>Sex</label>
+                    <select class="form-control" name="sex">
+                        <option {% if official.gender=="Male" %} selected {% endif %}>Male</option>
+                        <option {% if official.gender=="Female" %} selected {% endif %}>Female</option>
+                    </select>
+                  </div>
