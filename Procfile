@@ -1,0 +1,1 @@
+web:gunicorn barangay_information_system.wsgi --log-file -
